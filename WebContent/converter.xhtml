@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h = "http://java.sun.com/jsf/html" >
+
+<head>
+	
+ <style type="text/css">
+   .outer {
+	    display: table;
+	    position: absolute;
+	    height: 90%;
+	    width: 100%;
+	}
+	
+	.middle {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+	
+	.inner {
+	    margin-left: auto;
+	    margin-right: auto; 
+	    width: /*whatever width you want*/;
+	}
+   
+   
+   .centerText{
+       text-align: center;
+    }
+    
+    .button {
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: #f4511e;
+	  border: none;
+	  color: #FFFFFF;
+	  text-align: center;
+	  font-size: 1.5em;
+	  padding: 5px;
+	  width: 400px;
+	  transition: all 0.5s;
+	  cursor: pointer;
+	  margin: 5px;
+	}
+
+	.button span {
+	  cursor: pointer;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+
+	.button span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	}
+	
+	.button:hover span {
+	  padding-right: 15px;
+	}
+	
+	.button:hover span:after {
+	  opacity: 1;
+	  right: 0;
+	}
+	input[type=text] {
+		color: #00323F;	
+	    border: none;
+	    border-bottom: 2px solid #f4511e;
+	    font-size: 25px; 
+	    background-color: transparent;
+	}
+	h2 { 
+		color: #000040; 
+		font-family: 'Lato', sans-serif; 
+		font-size: 35px; 
+		font-weight: 100; 
+		line-height: 20px; 
+		margin: 20px 0 10px; 
+	}
+	label { 
+		color: #00323F; 
+		font-family: 'Lato', sans-serif; 
+		font-size: 25px;  
+		line-height: 20px; 
+		margin: 15px 15px 15px 15px; 
+	}
+	
+	body{
+	
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eaf4f6+0,c4d0e2+100 */
+		background: #eaf4f6; /* Old browsers */
+		background: -moz-linear-gradient(top,  #eaf4f6 0%, #c4d0e2 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  #eaf4f6 0%,#c4d0e2 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  #eaf4f6 0%,#c4d0e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaf4f6', endColorstr='#c4d0e2',GradientType=0 ); /* IE6-9 */
+
+
+	}
+	html, body{
+	    margin: 0;
+	    padding: 0;
+	
+	    min-width: 100%;
+	    width: 100%;
+	    max-width: 100%;
+	
+	    min-height: 100%;
+	    height: 100%;
+	    max-height: 100%;
+	}
+ </style>
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Convertitore €/$</title>
+</head>
+<body>
+	<div class="outer">
+	  	<div class="middle">
+		    <div class="inner">
+				<center>
+				<h2>Convertitore €->$</h2>
+				<h:form class="form-horizontal" action= "#{eurDollarConverter.convertToDollar()}" method="post" id="formId">
+				<table>
+					<tr>
+						<td><label>€</label></td>
+						<td><h:inputText value="#{eurDollarConverter.euro}" /></td>
+					</tr>
+					<tr>
+						<td><label>$</label></td>
+						<td><h:inputText id="dollaro1" value="#{eurDollarConverter.result}" disabled="true" /></td>
+					</tr>
+					<tr>
+						<td  class="centerText" colspan="2">
+							<h:commandButton class="button" value="Converti in Dollari(USD)" action="#{eurDollarConverter.convertToDollar}" />
+						</td>
+					</tr>
+				</table>
+				</h:form>
+				<br></br>
+				<br></br>
+				<h2>Convertitore $->€</h2>
+				<h:form class="form-horizontal" action= "#{eurDollarConverter.convertToEur()}" method="post" id="formId2">
+				<table>
+					<tr>
+						<td><label>$</label></td>
+						<td><h:inputText value="#{eurDollarConverter.dollaro}" />
+						</td>
+					</tr>
+					<tr>
+						<td><label>€</label></td>
+						<td><h:inputText id="euro1" value="#{eurDollarConverter.resultD}" disabled="true" /></td>
+					</tr>
+					<tr>
+						<td  class="centerText" colspan="2">
+							<h:commandButton class="button" value="Converti in Euro" action="#{eurDollarConverter.convertToEur}" />
+						</td>
+					</tr>
+				</table>
+				</h:form>
+				</center>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
